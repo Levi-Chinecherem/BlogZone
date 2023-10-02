@@ -14,10 +14,6 @@ BlogZone is a web application for creating, managing, and sharing blog posts. It
 - [Contributing](#contributing)
 - [License](#license)
 
-![Sample Image](https://github.com/Levi-Chinecherem/BlogZone/blob/main/sample%20output/p2.png)
-
-![Sample Image](https://github.com/Levi-Chinecherem/BlogZone/blob/main/sample%20output/p3.png)
-
 
 ## Features
 
@@ -113,7 +109,83 @@ To run BlogZone locally, follow these steps:
 
 ## Usage
 
-Provide information on how users can use your application, including any necessary configurations, usage examples, or screenshots.
+# BlogZone CKEditor Usage Guide
+
+## For Users:
+
+
+![user post blog Sample Image](https://github.com/Levi-Chinecherem/BlogZone/blob/main/sample%20output/p2.png)
+
+### 1. Logging In:
+
+Before creating a blog post, ensure you are logged in to your BlogZone account.
+
+### 2. Accessing the New Post Page:
+
+Click on the "New Post" link in the navigation menu. This will take you to the page where you can create a new blog post.
+
+### 3. Creating a New Post:
+
+- **Title:** Enter the title of your blog post in the "Title" field.
+  
+- **Cover Image (Optional):** If you have a cover image for your post, click on the "Choose File" button to upload it.
+
+- **Short Description:** Provide a brief summary or description of your post in the "Short Description" field.
+
+- **Content:** The main content of your post goes in the large text editor. This is where CKEditor comes into play.
+
+### 4. Using CKEditor:
+
+CKEditor provides a WYSIWYG interface, making it easy for you to format your blog post without dealing with HTML directly.
+
+#### Text Formatting:
+
+- **Bold:** Highlight the text you want to make bold and click the "B" icon in the toolbar.
+
+- **Italic:** Similarly, use the "I" icon to italicize your text.
+
+- **Lists:** Create ordered (numbered) or unordered (bulleted) lists using the corresponding icons.
+
+#### Inserting Links and Images:
+
+- **Link:** Highlight the text you want to turn into a link, click the link icon, and provide the URL.
+
+- **Image:** Click the image icon, upload your image, and insert it into your post.
+
+#### Additional Features:
+
+- **Undo and Redo:** Use the undo and redo arrows to go back or forward in your editing history.
+
+- **Source Code:** Click the "Source" icon to view or edit the HTML source code directly.
+
+### 5. Saving Your Post:
+
+Once you've crafted your blog post using CKEditor, scroll down and click the "Post" button to save and publish your post.
+
+## For Admins:
+
+
+![Admin post blog Sample Image](https://github.com/Levi-Chinecherem/BlogZone/blob/main/sample%20output/p3.png)
+
+Admins have the same process as users with a few additional features:
+
+### 1. Accessing Admin Controls:
+
+Admins have access to additional controls like updating and deleting posts.
+
+### 2. Updating a Post:
+
+- Navigate to the post you want to update.
+- Click the "Update" button.
+- Make the necessary changes using CKEditor.
+- Click the "Update Post" button to save your changes.
+
+### 3. Deleting a Post:
+
+- Navigate to the post you want to delete.
+- Click the "Delete" button.
+- Confirm the deletion when prompted.
+
 
 ## Technologies Used
 

@@ -3,7 +3,7 @@
 
 BlogZone is a web application for creating, managing, and sharing blog posts. It provides a platform for users to express their thoughts, share experiences, and engage with a community of readers.
 
-![Sample Image](LICENSE) 
+![Sample Image](https://github.com/Levi-Chinecherem/BlogZone/blob/main/sample%20output/p1.png) 
 
 ## Table of Contents
 - [Features](#features)
@@ -14,11 +14,10 @@ BlogZone is a web application for creating, managing, and sharing blog posts. It
 - [Contributing](#contributing)
 - [License](#license)
 
-![Sample Image](LICENSE)
+![Sample Image](https://github.com/Levi-Chinecherem/BlogZone/blob/main/sample%20output/p2.png)
 
-![Sample Image](LICENSE)
+![Sample Image](https://github.com/Levi-Chinecherem/BlogZone/blob/main/sample%20output/p3.png)
 
-![Sample Image](LICENSE)
 
 ## Features
 

@@ -1,0 +1,13 @@
+/* static/styles.css */
+
+body {
+    /* Set the minimum height to 100% of the viewport */
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper {
+    /* Push the footer to the bottom */
+    flex: 1;
+}

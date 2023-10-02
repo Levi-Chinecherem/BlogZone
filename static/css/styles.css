@@ -1,0 +1,11 @@
+/* Add this to your CSS file or style tag in your HTML */
+.blog-link {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Use the default text color */
+  }
+  
+  .blog-link:hover {
+    text-decoration: none; /* Add underline on hover if desired */
+    color: inherit;
+}
+  

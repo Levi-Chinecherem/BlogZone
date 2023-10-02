@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Register - BlogZone{% endblock %}
+
+{% block content %}
+  <div class="row justify-content-center mt-4">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h2>Register</h2>
+        </div>
+        <div class="card-body">
+          <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-success">Register</button>
+          </form>
+          <div class="mt-3">
+            <p>Already have an account? <a href="{% url 'accounts:login' %}">Login here</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

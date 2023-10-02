@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Update Post - BlogZone{% endblock %}
+
+{% block content %}
+  <h2>Update Post</h2>
+  <form method="post" class="col-md-6">
+    {% csrf_token %}
+    {{ post_form.as_p }}
+    <button type="submit" class="btn btn-info">Update</button>
+  </form>
+
+  <a href="{% url 'blog:post_detail' pk=post.pk %}" class="btn btn-secondary mt-3">🔙 Back to Post</a>
+{% endblock %}

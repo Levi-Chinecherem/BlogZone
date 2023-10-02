@@ -1,0 +1,65 @@
+<!-- accounts/templates/accounts/index.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}Home - BlogZone{% endblock %}
+
+{% block content %}
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-8">
+        <h2>Welcome to BlogZone!</h2>
+        <p>
+          BlogZone is a vibrant and interactive blogging platform where you can share your thoughts, stories, and ideas with the world.
+        </p>
+        <p>
+          Whether you're a seasoned writer or just starting, BlogZone provides a user-friendly platform to express yourself through engaging blog posts.
+        </p>
+        <p>
+          Key Features:
+        </p>
+        <ul>
+          <li>Post blogs and share your experiences.</li>
+          <li>Interact with other users through comments, likes, and favorites.</li>
+          <li>Discover similar and suggested blogs tailored to your interests.</li>
+          <li>Receive notifications about likes, comments, and more.</li>
+          <li>Create a personalized profile and manage your own blogging company.</li>
+        </ul>
+
+        <div class="col-lg-8">
+            <div class="card bg-info text-white">
+              <div class="card-body">
+                <h5 class="card-title">Get Started</h5>
+                <p class="card-text">Join BlogZone today and start your blogging journey!</p>
+                <a href="{% url 'accounts:register' %}" class="btn btn-light">Sign Up</a>
+              </div>
+            </div>
+            </div>
+      </div>
+
+        <div class="col-lg-4">
+        <!-- Commented out the latest blog section for now -->
+        <!--
+        {% comment %} <div class="card bg-info text-white mt-3">
+          <div class="card-body">
+            <h5 class="card-title">Latest Blog</h5>
+            <p class="card-text">Check out our latest blog: <a href="{% url 'blog:post_detail' pk=latest_blog.pk %}">{{ latest_blog.title }}</a></p>
+            <img src="{{ latest_blog.random_image_url }}" alt="Random Image" class="img-fluid mt-2">
+          </div>
+        </div> {% endcomment %}
+        -->
+
+        <!-- Commented out the latest blog section for now -->
+
+        <div class="card bg-info text-white mt-3">
+        <div class="card-body">
+            <h5 class="card-title">Latest Blog</h5>
+            <p class="card-text">Check out our latest blog: <a href="#" target="_blank">Exciting Adventures</a></p>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpZzaPIb8vay4FS3AsVwhEsqMMjnIL3T9RvsjfAtwlHNVOGGBkNMB9HKJByq-z0k5nsxo&usqp=CAU" alt="Random Image" class="img-fluid mt-2" style="object-fit: cover; width: 100%; height: 100%;">
+        </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,134 @@
+<!-- blog/templates/blog/post_detail.html -->
+
+{% extends 'base.html' %}
+{% load custom_filters %}
+
+{% block title %}{{ post.title }} - BlogZone{% endblock %}
+
+{% block content %}
+  <!-- Container for Post Content, Like, Favorite, and Comments -->
+  <div class="card mt-3">
+    <div class="card-body">
+
+      <!-- Post Title and Content -->
+      <!-- Post Title and Content -->
+      <div>
+        {% comment %} <h2>{{ post.title }}</h2>
+        {% if post.cover_image %}
+          <img src="{{ post.cover_image.url }}" class="img-fluid mb-3" alt="{{ post.title }}">
+        {% endif %}
+        <p>{{ post.short_description }}</p> {% endcomment %}
+        {{ post.content|safe }}
+
+        <div class="flex-grow-1"></div> {# Empty div to take up remaining space #}
+              <div class="card-text mt-auto">
+                <small class="text-muted">Author: {{ post.author.username }}, Published on: {{ post.timestamp }}</small>
+              </div>
+      </div>
+
+      <!-- Container for Like, Favorite, and Comments -->
+      <div class="d-flex justify-content-between align-items-center mt-3">
+
+        <!-- Like button -->
+        <form method="post" action="{% url 'blog:like_post' pk=post.pk %}">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-primary">
+            <span id="likes-count">{{ likes_count }}</span>
+            {% if request.user.is_authenticated %}
+              {% if post|has_liked:request.user %}
+                👎 Unlike
+              {% else %}
+                👍 Like
+              {% endif %}
+            {% else %}
+              👍 Like
+            {% endif %}
+          </button>
+        </form>
+
+        <!-- Favorite button -->
+        <form method="post" action="{% url 'blog:favorite_post' pk=post.pk %}">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-warning">
+            <span id="favorites-count">{{ favorites_count }}</span>
+            {% if request.user.is_authenticated %}
+              {% if post|has_favorited:request.user %}
+              💔 Unfavorite
+              {% else %}
+              ❤️ Favorite
+              {% endif %}
+            {% else %}
+            ❤️ Favorite
+            {% endif %}
+          </button>
+        </form>
+
+        <!-- Update and Delete buttons (visible to authors) -->
+        {% if request.user == post.author %}
+        <div class="btn-group" role="group">
+          <a href="{% url 'blog:update_post' pk=post.pk %}" class="btn btn-info">✏️ Update</a>
+          <form method="post" action="{% url 'blog:delete_post' pk=post.pk %}" class="d-inline">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this post?')">🗑️ Delete</button>
+          </form>
+        </div>
+        {% endif %}
+
+      </div>
+
+      <!-- Add Comment Form in a responsive card -->
+      <div class="card mt-3" style="max-width: 600px;">
+        <div class="card-body">
+          <form id="comment-form" method="post" action="{% url 'blog:add_comment' pk=post.pk %}">
+            {% csrf_token %}
+            {{ comment_form.text }}
+            <button type="submit" class="btn btn-secondary">💬 Comment...</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Comments -->
+      <div class="card mt-3">
+        <div class="card-body">
+            <h3 class="card-title">Comments</h3>
+            {% for comment in comments %}
+                <p class="card-text">
+                    <strong>{{ comment.author.get_full_name|default:comment.author.username }}</strong>: {{ comment.text }}
+                </p>
+            {% endfor %}
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <a href="{% url 'blog:post_list' %}" class="btn btn-secondary mt-3">🔙 Back</a>
+{% endblock %}
+
+{% block script %}
+<script>
+  // Use jQuery to handle the form submission via AJAX
+  
+  $(document).ready(function () {
+    $(document).ready(function () {
+      $('#comment-form').submit(function (e) {
+          e.preventDefault();
+
+          $.ajax({
+              type: 'POST',
+              url: '{% url "blog:add_comment" pk=post.pk %}',
+              data: $('#comment-form').serialize(),
+              success: function (data) {
+                  console.log('Comment submitted successfully');
+                  // Clear the form
+                  $('#comment-form')[0].reset();
+              },
+              error: function (xhr, errmsg, err) {
+                  console.log('Error submitting comment');
+              }
+          });
+      });
+  });
+</script>
+
+{% endblock script %}

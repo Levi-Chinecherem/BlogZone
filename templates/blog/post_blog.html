@@ -1,0 +1,18 @@
+<!-- blog/templates/blog/post_blog.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}Post Blog - BlogZone{% endblock %}
+
+{% block content %}
+  <div class="card mx-auto mt-5" style="max-width: 800px;">
+    <div class="card-body">
+      <h2 class="card-title">Post a Blog</h2>
+      <form method="post"  action="{% url 'blog:post_blog' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary form-control mb-2 mt-2">Post</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}

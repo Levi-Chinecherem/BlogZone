@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load custom_filters %}
+
+{% block title %}Blog - BlogZone{% endblock %}
+
+{% block content %}
+  <h2>Blog Posts</h2>
+  <div class="row">
+    {% for post in posts %}
+      <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
+        <a href="{% url 'blog:post_detail' pk=post.pk %}" class="blog-link">
+          <div class="card h-100">
+            {% if post.cover_image %}
+              <img src="{{ post.cover_image.url }}" class="card-img-top" alt="{{ post.title }}">
+            {% endif %}
+            <div class="card-body d-flex flex-column">
+              <div>
+                <h5 class="card-title">{{ post.title }}</h5>
+                <p class="card-text">{{ post.short_description }}</p>
+              </div>
+              <div class="flex-grow-1"></div> {# Empty div to take up remaining space #}
+              <div class="card-text mt-auto">
+                <small class="text-muted">Author: {{ post.author.username }}, Published on: {{ post.timestamp }}</small>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+
+  <!-- Pagination -->
+  <div class="pagination">
+    <span class="step-links">
+      {% if posts.has_previous %}
+        <a href="?page=1">&laquo; first</a>
+        <a href="?page={{ posts.previous_page_number }}">previous</a>
+      {% endif %}
+
+      <span class="current">
+        Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+      </span>
+
+      {% if posts.has_next %}
+        <a href="?page={{ posts.next_page_number }}">next</a>
+        <a href="?page={{ posts.paginator.num_pages }}">last &raquo;</a>
+      {% endif %}
+    </span>
+  </div>
+{% endblock %}

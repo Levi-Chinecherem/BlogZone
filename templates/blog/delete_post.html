@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Delete Post - BlogZone{% endblock %}
+
+{% block content %}
+  <h2>Delete Post: "{{ post.title }}"</h2>
+  <p>Are you sure you want to delete the post "{{ post.title }}"?</p>
+  
+  <form method="post" class="d-inline">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">Confirm Delete</button>
+  </form>
+
+  <a href="{% url 'blog:post_detail' pk=post.pk %}" class="btn btn-secondary ml-2">Cancel</a>
+{% endblock %}
